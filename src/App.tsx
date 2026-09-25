@@ -44,7 +44,7 @@ function App() {
       email: email,
       password: password
     })
-    .then(response => {
+    .then(() => {
       setMessage('✅ Registrado con éxito. Ahora dale a "Ingresar".');
     })
     .catch(error => {
