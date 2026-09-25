@@ -45,11 +45,11 @@ function App() {
       password: password
     })
     .then(() => {
-      setMessage('✅ Registrado con éxito. Ahora dale a "Ingresar".');
+      setMessage('Registrado con éxito. Ahora dale a "Ingresar".');
     })
     .catch(error => {
       console.error(error);
-      setMessage('❌ Error: El usuario ya existe o hubo un problema');
+      setMessage('Error: El usuario ya existe o hubo un problema');
     });
   };
 
@@ -63,11 +63,11 @@ function App() {
     })
     .then(response => {
       setToken(response.data);
-      setMessage('✅ ¡Sesión iniciada con éxito! Ya puedes comprar.');
+      setMessage('¡Sesión iniciada con éxito! Ya puedes comprar.');
     })
     .catch(error => {
       console.error(error);
-      setMessage('❌ Error de red o Credenciales incorrectas');
+      setMessage('Error de red o Credenciales incorrectas');
     });
   };
 
@@ -84,14 +84,14 @@ function App() {
       }
     )
     .then(response => {
-      setMessage(`✅ ¡Orden #${response.data.id} creada con éxito! Compraste: ${productName}`);
+      setMessage(`¡Orden #${response.data.id} creada con éxito! Compraste: ${productName}`);
       setProducts(products.map(p => 
         p.id === productId ? { ...p, stock: p.stock - 1 } : p
       ));
     })
     .catch(error => {
       console.error(error);
-      setMessage(`❌ Error de Seguridad: ${error.response?.data || 'Acceso Denegado'}`);
+      setMessage(`Error de Seguridad: ${error.response?.data || 'Acceso Denegado'}`);
     });
   };
 
@@ -103,7 +103,7 @@ function App() {
       </header>
 
       {message && (
-        <div className={`p-4 mb-6 rounded-md text-center font-bold ${message.includes('Error') || message.includes('❌') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+        <div className={`p-4 mb-6 rounded-md text-center font-bold ${message.includes('Error') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
           {message}
         </div>
       )}
